@@ -1,0 +1,44 @@
+---
+// src/pages/sequences/[...slug].astro
+import Layout from '../../layouts/layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const sequences = await getCollection('sequences');
+  return sequences.map(seq => ({
+    params: { slug: seq.slug },
+    props: { seq },
+  }));
+}
+
+const { seq } = Astro.props;
+const { Content } = await seq.render(); 
+---
+<Layout title={seq.data.title} description={seq.data.description}>
+    
+    <article class="prose dark:prose-invert prose-lg max-w-none mx-auto">
+        <h1 class="mb-2">{seq.data.title}</h1>
+        <p class="text-lg text-gray-500 dark:text-gray-400">
+            {seq.data.date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
+        </p>
+        
+        <div class="flex flex-wrap gap-4 mb-8">
+            {seq.data.lien_cours && (
+                <a href={seq.data.lien_cours} target="_blank" class="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg no-underline hover:bg-blue-700">
+                    Voir le Support de Cours (PDF)
+                </a>
+            )}
+            {seq.data.lien_evaluation && (
+                <a href={seq.data.lien_evaluation} target="_blank" class="bg-gray-700 text-white font-bold py-2 px-4 rounded-lg no-underline hover:bg-gray-800">
+                    Voir l'Évaluation (PDF)
+                </a>
+            )}
+        </div>
+
+        {seq.data.image && (
+            <img src={seq.data.image} alt={seq.data.title} class="rounded-lg shadow-lg" />
+        )}
+
+        <Content />
+    </article>
+</Layout>

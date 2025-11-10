@@ -1,0 +1,17 @@
+---
+// src/components/Footer.astro
+const currentYear = new Date().getFullYear();
+---
+<footer class="w-full border-t border-gray-200 dark:border-gray-700 mt-20">
+    <div class="container mx-auto px-4 py-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 dark:text-gray-400 max-w-5xl">
+        <p>
+            &copy; {currentYear} Younes TICHOUA. Site construit avec 
+            <a href="https://astro.build/" target="_blank" class="hover:text-blue-600">Astro</a> 
+            & <a href="https://tailwindcss.com/" target="_blank" class="hover:text-blue-600">Tailwind CSS</a>.
+        </p>
+        <div class="flex gap-4 mt-4 md:mt-0">
+            <a href="https://github.com/votre-nom" target="_blank" class="hover:text-blue-600">GitHub</a>
+            <a href="https://www.linkedin.com/in/votre-nom" target="_blank" class="hover:text-blue-600">LinkedIn</a>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,102 @@
+---
+// src/pages/parcours.astro
+import Layout from '../layouts/layout.astro';
+---
+<Layout 
+    title="Parcours & CV"
+    description="Mon parcours, mes compétences, mes certifications, et mon CV.">
+
+    <section class="text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Mon Parcours</h1>
+        <p class="text-lg max-w-3xl mx-auto text-gray-600 dark:text-gray-300">
+            CV, compétences (Section 2), certifications (Section 3), et veille (Section 7).
+        </p>
+        <a 
+            href="/cv-enseignant.pdf" 
+            target="_blank" 
+            class="mt-8 inline-block bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-transform hover:scale-105">
+            Télécharger mon CV (PDF)
+        </a>
+    </section>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="space-y-12">
+            <section>
+                <h2 class="text-2xl font-bold mb-6 border-b pb-2">Compétences Pédagogiques</h2>
+                <ul class="list-disc list-inside space-y-1">
+                    <li>Ingénierie pédagogique (Pédagogie de projet)</li>
+                    <li>Évaluation par compétences</li>
+                    <li>Différenciation et gestion de l'hétérogénéité</li>
+                    <li>Utilisation des outils (Capytale, Basthon, Git/GitHub)</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2 class="text-2xl font-bold mb-6 border-b pb-2">Compétences Techniques</h2>
+                <ul class="list-disc list-inside space-y-1">
+                    <li><b>Expert :</b> Python (Flask, Pandas), HTML5, CSS3, SQL</li>
+                    <li><b>Avancé :</b> JavaScript (Astro), Git, Linux, Réseaux</li>
+                    <li><b>Notions :</b> C, PHP, Rust</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold mb-6 border-b pb-2">Développement & Veille</h2>
+                <p>Le domaine évolue si vite qu'une veille constante est nécessaire.</p>
+                <ul class="list-disc list-inside space-y-1 mt-4">
+                    <li>MOOC Suivi : "Rust for Beginners" (Coursera, 2024)</li>
+                    <li>Conférence : "Paris Web" (2023, participant)</li>
+                    <li>Lecture : "Fireship.io", "Hacker News", Blog de "Stratechery"</li>
+                </ul>
+            </section>
+        </div>
+
+        <div class="space-y-12">
+            <section>
+                <h2 class="text-2xl font-bold mb-6 border-b pb-2">Parcours & Diplômes</h2>
+                 <ul class="space-y-4">
+                <li class="pl-4 border-l-2 border-blue-600">
+                    <strong class="block">2019 - Aujourd'hui</strong>
+                    Enseignant Cycle secondaire Quilifiant - Complexe Pédagogique Aghbalou, Setti Fadma | Alhaouz 
+                </li>
+                <li class="pl-4 border-l-2 border-gray-300">
+                    <strong class="block">2016 - 2019</strong>
+                    Enseignant Cycle secondaire Quilifiant - Lycée M'hamid Eljadida, Mhamid Elghzelan | Zagoura 
+                </li>
+                <li class="pl-4 border-l-2 border-gray-300">
+                    <strong class="block">2015 - 2016</strong>
+                    Formation Qualification en Metier d'enseignement. - CREMF - Casablanca
+                </li>
+                <li class="pl-4 border-l-2 border-gray-300">
+                    <strong class="block">2014 - 2015</strong>
+                    LPQME Informatique - ENS - Marrakech
+                </li>
+                <li class="pl-4 border-l-2 border-gray-300">
+                    <strong class="block">2012 - 2014</strong>
+                    Master - Informatique Decisionnelle - FSTBM Beni Mellal
+                </li>
+            </ul>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold mb-6 border-b pb-2">Retours & Évaluations</h2>
+                <p>La preuve sociale de mon engagement.</p>
+                <ul class="list-disc list-inside space-y-1 mt-4">
+                    <li>
+                        <a href="/evaluations/rapport-inspection-2023.pdf" target="_blank" class="text-blue-600 hover:underline">
+                            Rapport d'inspection (anonymisé) - 2023
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/evaluations/retours-eleves-2024.pdf" target="_blank" class="text-blue-600 hover:underline">
+                            Sondage de fin d'année (anonymisé) - 2024
+                        </a>
+                    </li>
+                    <li class="italic text-gray-500">
+                        "Un professeur qui rend l'algorithmique claire." (Extrait)
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+</Layout>

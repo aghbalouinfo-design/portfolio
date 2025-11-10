@@ -1,0 +1,26 @@
+---
+// src/pages/sequences/index.astro
+import Layout from '../../layouts/layout.astro';
+import { getCollection } from 'astro:content';
+import ContentCard from '../../components/ContentCard.astro';
+
+const sortedSequences = await getCollection('sequences')
+    .then(projets => projets.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()));
+---
+<Layout 
+    title="Séquences Pédagogiques"
+    description="Plans de cours, activités, et évaluations en NSI et SNT.">
+
+    <section class="text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Séquences Pédagogiques</h1>
+        <p class="text-lg max-w-3xl mx-auto text-gray-600 dark:text-gray-300">
+            Mes "artefacts" : une sélection de plans de cours, activités, et évaluations (Section 4) conçus pour mes classes de NSI et SNT.
+        </p>
+    </section>
+
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {sortedSequences.map((sequence) => (
+            <ContentCard item={sequence} basePath="/sequences" />
+        ))}
+    </section>
+</Layout>

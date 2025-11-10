@@ -1,0 +1,27 @@
+---
+// src/pages/outils-tice/index.astro
+import Layout from '../../layouts/layout.astro';
+import { getCollection } from 'astro:content';
+import ContentCard from '../../components/ContentCard.astro';
+
+const sortedOutils = await getCollection('outils-tice')
+    .then(outils => outils.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()));
+---
+<Layout 
+    title="Outils TICE"
+    description="Mes projets personnels pour l'enseignement : sites, webapps, et outils TICE.">
+
+    <section class="text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Mes Outils & Projets TICE</h1>
+        <p class="text-lg max-w-3xl mx-auto text-gray-600 dark:text-gray-300">
+            En tant qu'enseignant en informatique, je construis mes propres outils (Section 5) :
+            sites de cours, applications de gestion, ou ressources interactives.
+        </p>
+    </section>
+
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {sortedOutils.map((outil) => (
+            <ContentCard item={outil} basePath="/outils-tice" />
+        ))}
+    </section>
+</Layout>

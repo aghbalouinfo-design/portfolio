@@ -1,0 +1,31 @@
+---
+// src/pages/impact.astro
+import Layout from '../layouts/layout.astro';
+import { getEntry } from 'astro:content';
+import ImpactCard from '../components/ImpactCard.astro';
+
+// NOUVEAU CODE
+const galerie = await getEntry('impact', 'galerie');
+
+// On vérifie si 'galerie' existe.
+// Si oui, on prend 'galerie.data'.
+// Sinon (?), on utilise un tableau vide [].
+const projetsEleves = galerie ? galerie.data : [];
+---
+<Layout 
+    title="Impact & Travaux d'Élèves"
+    description="Exemples de projets et travaux (anonymisés) réalisés par mes élèves en NSI et SNT.">
+
+    <section class="text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Impact & Travaux d'Élèves</h1>
+        <p class="text-lg max-w-3xl mx-auto text-gray-600 dark:text-gray-300">
+            La preuve la plus concrète de l'apprentissage (Section 6). Voici une sélection de travaux (anonymisés) réalisés par mes élèves.
+        </p>
+    </section>
+
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projetsEleves.map((projet) => (
+            <ImpactCard {...projet} />
+        ))}
+    </section>
+</Layout>

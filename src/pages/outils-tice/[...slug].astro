@@ -1,0 +1,44 @@
+---
+// src/pages/outils-tice/[...slug].astro
+import Layout from '../../layouts/layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const outils = await getCollection('outils-tice');
+  return outils.map(outil => ({
+    params: { slug: outil.slug },
+    props: { outil },
+  }));
+}
+
+const { outil } = Astro.props;
+const { Content } = await outil.render(); 
+---
+<Layout title={outil.data.title} description={outil.data.description}>
+    
+    <article class="prose dark:prose-invert prose-lg max-w-none mx-auto">
+        <h1 class="mb-2">{outil.data.title}</h1>
+        <p class="text-lg text-gray-500 dark:text-gray-400">
+            {outil.data.date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
+        </p>
+        
+        <div class="flex flex-wrap gap-4 mb-8">
+            {outil.data.lien_demo && (
+                <a href={outil.data.lien_demo} target="_blank" class="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg no-underline hover:bg-blue-700">
+                    Voir la Démo
+                </a>
+            )}
+            {outil.data.lien_code && (
+                <a href={outil.data.lien_code} target="_blank" class="bg-gray-700 text-white font-bold py-2 px-4 rounded-lg no-underline hover:bg-gray-800">
+                    Voir le Code Source
+                </a>
+            )}
+        </div>
+
+        {outil.data.image && (
+            <img src={outil.data.image} alt={outil.data.title} class="rounded-lg shadow-lg" />
+        )}
+
+        <Content />
+    </article>
+</Layout>

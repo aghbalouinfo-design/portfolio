@@ -1,16 +1,63 @@
 ---
+// src/pages/index.astro
+import Layout from '../layouts/layout.astro';
+import { getCollection, getEntry } from 'astro:content';
+import ContentCard from '../components/ContentCard.astro';
+import ImpactCard from '../components/ImpactCard.astro';
 
+// Récupérer un exemple de chaque
+const sequence = await getCollection('sequences').then(c => c?.[0]);
+const outil = await getCollection('outils-tice').then(c => c?.[0]);
+// 1. On récupère la galerie (qui peut être 'undefined')
+const galerie = await getEntry('impact', 'galerie');
+
+// 2. On prend le premier item. 
+// L'opérateur '?.' (optional chaining) gère tous les cas :
+// - Si 'galerie' est 'undefined', 'impact' sera 'undefined'.
+// - Si 'galerie.data' est '[]', 'impact' sera 'undefined'.
+const impact = galerie?.data?.[0];
 ---
+<Layout 
+    title="Accueil"
+    description="Portfolio de Younes TICHOUA, enseignant en informatique (NSI/SNT) au lycée.">
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+    <section class="flex flex-col md:flex-row items-center justify-center py-20 text-center md:text-left">
+        <img 
+            src="/images/YounesTICH.jpg" 
+            alt="Younes TICHOUA"
+            class="w-40 h-40 rounded-full object-cover shadow-lg mb-8 md:mb-0 md:mr-10"
+        />
+		<div>
+            <h1 class="text-5xl md:text-6xl font-extrabold mb-4">
+                Younes TICHOUA
+            </h1>
+            <h2 class="text-2xl md:text-3xl font-light text-gray-600 dark:text-gray-300 mb-8">
+                Enseignant en Informatique (TCSF & TCLSH)
+            </h2>
+           <p class="max-w-xl text-lg mb-8">
+    Je forme les élèves à la <strong>pensée algorithmique</strong> et à la <strong>citoyenneté numérique</strong> à travers des projets concrets et des outils pédagogiques innovants.
+</p>
+            <div class="flex gap-4 justify-center md:justify-start">
+                <a href="/philosophie" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-transform hover:scale-105">
+                    Ma Philosophie
+                </a>
+                <a href="/parcours" class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-transform hover:scale-105">
+                    Mon Parcours
+                </a>
+            </div>
+        </div>
+	</section>
+
+    <section class="py-20">
+        <h2 class="text-3xl font-bold text-center mb-12">
+            En Bref
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {sequence && <ContentCard item={sequence} basePath="/sequences" />}
+            {outil && <ContentCard item={outil} basePath="/outils-tice" />}
+            {impact && <ImpactCard {...impact} />}
+        </div>
+  
+    </section>
+</Layout>

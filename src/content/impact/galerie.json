@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Site Web SNT sur 'Le Sport'",
+    "description": "Exemple de site d'une page (HTML/CSS) réalisé par un binôme de Seconde. Notez l'utilisation correcte des balises sémantiques.",
+    "tags": ["Seconde", "HTML", "SNT"],
+    "image": "/images/impact/snt-site-sport.jpg"
+  },
+  {
+    "title": "Jeu 'Pierre-Feuille-Ciseaux'",
+    "description": "Interface graphique simple réalisée en Python (Tkinter) par un élève de Première NSI.",
+    "tags": ["Première", "Python", "NSI"],
+    "image": "/images/impact/nsi-tkinter-pfc.jpg"
+  },
+  {
+    "title": "Extrait de code : Tri par sélection",
+    "description": "Implémentation claire et bien commentée d'un algorithme de tri (Première NSI).",
+    "tags": ["Algorithmique", "Python", "NSI"],
+    "image": "/images/impact/nsi-code-tri.jpg"
+  }
+]

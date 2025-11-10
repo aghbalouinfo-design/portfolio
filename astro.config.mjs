@@ -1,5 +1,10 @@
-// @ts-check
+// astro.config.mjs
 import { defineConfig } from 'astro/config';
+import tailwind from "@astrojs/tailwind";
 
-// https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+  integrations: [tailwind()],
+  // Remplissez ceci avant le déploiement final
+  // ex: site: 'https://votre-domaine.com',
+  // ex: base: '/mon-portfolio', 
+});
