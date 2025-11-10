@@ -1,11 +1,13 @@
-# .github/workflows/deploy.yml
 name: Deploy Portfolio to GitHub Pages
 
 on:
+  # Se déclenche à chaque fois que vous "push" sur la branche "main"
   push:
-    branches: [ main ] # Se déclenche au push sur la branche 'main'
+    branches: [ main ]
+  # Permet aussi de le lancer manuellement depuis l'onglet Actions
   workflow_dispatch:
 
+# Permissions nécessaires pour que l'action puisse écrire sur GitHub Pages
 permissions:
   contents: read
   pages: write
@@ -17,16 +19,22 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 20 # (Une version LTS récente)
           cache: 'npm'
+          
       - name: Install dependencies
         run: npm install
+        
       - name: Build
+        # C'est ici qu'Astro construit votre site dans le dossier /dist
         run: npm run build
+        
       - name: Upload artifact
+        # L'action "met de côté" le dossier /dist pour le déploiement
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
@@ -40,4 +48,5 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
+        # C'est cette action qui publie le /dist sur votre site
         uses: actions/deploy-pages@v4
