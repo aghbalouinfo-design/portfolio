@@ -3,7 +3,7 @@ title: "Séquence : Structure de base d'un Ordinateur"
 description: "Une séquence de Terminale NSI sur la consommation d'API REST et la manipulation de JSON."
 date: 2024-10-25
 tags: ["TCSF", "Ordinateur", "CPU", "Von neumann","RAM"]
-image: '/images/sequences/default-project.jpg' 
+image: './images/sequences/default-project.jpg' 
 lien_cours: '/fichiers/cours-api.pdf'
 lien_evaluation: '/fichiers/eval-api.pdf'
 ---
