@@ -5,9 +5,9 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   integrations: [tailwind()],
 
-  // Votre nom de domaine racine
+  // 1. Votre nom de domaine racine
   site: 'https://cs-lycee.com', 
 
-  // Le nom de votre nouveau dépôt
+  // 2. Le nom de votre dépôt (le sous-dossier)
   base: '/portfolio',
 });
