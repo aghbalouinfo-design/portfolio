@@ -4,7 +4,10 @@ import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
   integrations: [tailwind()],
-  // Remplissez ceci avant le déploiement final
-  // ex: site: 'https://votre-domaine.com',
-  // ex: base: '/mon-portfolio', 
+
+  // Votre nom de domaine racine
+  site: 'https://cs-lycee.com', 
+
+  // Le nom de votre nouveau dépôt
+  base: '/portfolio',
 });
