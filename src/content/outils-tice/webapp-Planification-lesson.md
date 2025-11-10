@@ -3,7 +3,7 @@ title: "WebApp : Planificateur de Leçons"
 description: "Un web app pour centraliser et facilté le travail de redaction des fiche pédagogique."
 date: 2025-03-10
 tags: ["WebApp", "Html/CSS/JS", "App Script", "Outil"]
-image: "public/images/default-project.webp"
+image: "/images/default-project.webp"
 lien_demo: "https://votre-applet.fr"
 lien_code: "https://github.com/votre-nom/applet-gestion"
 ---
